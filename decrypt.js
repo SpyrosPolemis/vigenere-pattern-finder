@@ -10,11 +10,11 @@ let fiveLetterPatterns = [];
 
 function parseCyphertext() {
     for (let i = 0; i < letters.length; i++) {
-        for (let j = 0; j < cyphertext.length; j++) {
-            if (cyphertext[j] === letters[i]) {
-                threeLetterPatterns.push(cyphertext.slice(j, j + 2))
-                fourLetterPatterns.push(cyphertext.slice(j, j + 3))
-                fiveLetterPatterns.push(cyphertext.slice(j, j + 4))
+        for (let j = 0; j < ciphertext.length; j++) {
+            if (ciphertext[j] === letters[i]) {
+                threeLetterPatterns.push(ciphertext.slice(j, j + 2))
+                fourLetterPatterns.push(ciphertext.slice(j, j + 3))
+                fiveLetterPatterns.push(ciphertext.slice(j, j + 4))
             }
         }
     }
@@ -40,6 +40,6 @@ function getRepeatingPatterns(pattern, frequency) {
 }
 
 parseCyphertext()
-let twoLetterDict = getRepeatingPatterns(threeLetterPatterns, 5) // Gets all 2-letter patterns that have a frequency 6 or greater
-let threeLetterDict = getRepeatingPatterns(fourLetterPatterns, 2) // Gets all 3-letter patterns that have a frequency of 3 or greater
-let fourLetterDict = getRepeatingPatterns(fiveLetterPatterns, 1) // Gets all 4-letter patterns that have a frequency of 2 or greater
+let frequentTwoLetters = getRepeatingPatterns(threeLetterPatterns, 6) // Gets all 2-letter patterns that have a frequency of 7  or greater
+let frequentThreeLetters = getRepeatingPatterns(fourLetterPatterns, 2) // Gets all 3-letter patterns that have a frequency of 3 or greater
+let frequentFourLetters = getRepeatingPatterns(fiveLetterPatterns, 1) // Gets all 4-letter patterns that have a frequency of 2 or greater
