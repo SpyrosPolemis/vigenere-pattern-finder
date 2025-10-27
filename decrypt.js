@@ -1,8 +1,9 @@
 cyphertext = "xkvdxvokmlavgkigbcdlfkgscvckyiewixqecbzoytxcukbrwtwuvggykhxquavfhkaupkuqfticawunvzxvizlzmgfmycxrzctqavilvkugeuvrxhlwtzbjmbpobcjrgrhakausguhbwxwnwbetketahgkdigkvzwklzabrzwcetaokiazqhxrniscmtmguekloanwtuekwnqrhklslmgmzhtedxhobulxirbxuzalaionknecjlrnwwzzclxxivhoxngfrcretlhjxuekmisdwvrmxvkvqogvdysxpkkfzlbxgzaageooezqqflyetpywhglkekijiulkfnzwkvuwhwdbwiqrdbeetrjmhxbtixrigyamyigloacjfpigejlklbfnmsnquebcimexgcuazeoismpllwrxhkzkudnalevivjheoyxnmcjmjaghgvgfezgaxkvgvwvsiszqohevmxrzqpykvfhvsavztkiftxwxwwkhxilnkubvnvcunigovrgqkvvsgupksswvwwieemmqqmlkoeixipuxyilguuoamdegxzwgvntammuvemekukigvflavakxymcjgvdamsitwilttxowpslfnxslbjwffsmtxwijxjsbzkzwdxishjnqulbdeyvklgjbtkmlkotwtkseimieqbjmtvqmftryilpkifwkjhbtovdsmklxetljalmilmuvhgkrmhhkzpwywivmkvvkmrtx"
 // cyphertext.split()
 letters = "abcdefghijklmnopqrstuvwxyz"
-letters = letters.split()
+letters = letters.split("")
 
+// TODO: fix naming / slicing
 let threeLetterPatterns = [];
 let fourLetterPatterns = [];
 let fiveLetterPatterns = [];
@@ -21,22 +22,24 @@ function parseCyphertext() {
     
 function printRepeatingPatterns(pattern) {
     let dict = {};
-    for (let i = 0; i > pattern.length; i++) {
+    for (let i = 0; i < pattern.length; i++) {
         if (pattern[i] in dict) {
             dict[pattern[i]] += 1;
         } else {
-            dict[pattern[i]] = 0;
+            dict[pattern[i]] = 1;
         }
     }
-
+    dict
     for (const key in dict) {
-        if (dict[key] > 1) {
+        if (dict[key] > 3) {
             console.log(key, dict[key])
+            // TODO: Add keys with more than 1 appearence to new dict
         }
     }
+    return dict;
 }
 
 parseCyphertext()
-printRepeatingPatterns(threeLetterPatterns)
-printRepeatingPatterns(fourLetterPatterns)
-printRepeatingPatterns(fiveLetterPatterns)
+let threeLetterDict = printRepeatingPatterns(threeLetterPatterns)
+let fourLetterDict = printRepeatingPatterns(fourLetterPatterns)
+let fiveLetterDict = printRepeatingPatterns(fiveLetterPatterns)
