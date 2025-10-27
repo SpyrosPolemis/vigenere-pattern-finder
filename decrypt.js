@@ -20,7 +20,7 @@ function parseCyphertext() {
     }
 }
     
-function printRepeatingPatterns(pattern) {
+function getRepeatingPatterns(pattern, frequency) {
     let dict = {};
     for (let i = 0; i < pattern.length; i++) {
         if (pattern[i] in dict) {
@@ -29,17 +29,17 @@ function printRepeatingPatterns(pattern) {
             dict[pattern[i]] = 1;
         }
     }
-    dict
+    let repeatingPatterns = {}
     for (const key in dict) {
-        if (dict[key] > 3) {
-            console.log(key, dict[key])
-            // TODO: Add keys with more than 1 appearence to new dict
+        if (dict[key] > frequency) {
+            // console.log(key, dict[key])
+            repeatingPatterns[key] = dict[key]; 
         }
     }
-    return dict;
+    return repeatingPatterns;
 }
 
 parseCyphertext()
-let threeLetterDict = printRepeatingPatterns(threeLetterPatterns)
-let fourLetterDict = printRepeatingPatterns(fourLetterPatterns)
-let fiveLetterDict = printRepeatingPatterns(fiveLetterPatterns)
+let twoLetterDict = getRepeatingPatterns(threeLetterPatterns, 5) // Gets all 2-letter patterns that have a frequency 6 or greater
+let threeLetterDict = getRepeatingPatterns(fourLetterPatterns, 2) // Gets all 3-letter patterns that have a frequency of 3 or greater
+let fourLetterDict = getRepeatingPatterns(fiveLetterPatterns, 1) // Gets all 4-letter patterns that have a frequency of 2 or greater
