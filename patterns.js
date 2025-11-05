@@ -1,12 +1,11 @@
-export const ciphertext = "xkvdxvokmlavgkigbcdlfkgscvckyiewixqecbzoytxcukbrwtwuvggykhxquavfhkaupkuqfticawunvzxvizlzmgfmycxrzctqavilvkugeuvrxhlwtzbjmbpobcjrgrhakausguhbwxwnwbetketahgkdigkvzwklzabrzwcetaokiazqhxrniscmtmguekloanwtuekwnqrhklslmgmzhtedxhobulxirbxuzalaionknecjlrnwwzzclxxivhoxngfrcretlhjxuekmisdwvrmxvkvqogvdysxpkkfzlbxgzaageooezqqflyetpywhglkekijiulkfnzwkvuwhwdbwiqrdbeetrjmhxbtixrigyamyigloacjfpigejlklbfnmsnquebcimexgcuazeoismpllwrxhkzkudnalevivjheoyxnmcjmjaghgvgfezgaxkvgvwvsiszqohevmxrzqpykvfhvsavztkiftxwxwwkhxilnkubvnvcunigovrgqkvvsgupksswvwwieemmqqmlkoeixipuxyilguuoamdegxzwgvntammuvemekukigvflavakxymcjgvdamsitwilttxowpslfnxslbjwffsmtxwijxjsbzkzwdxishjnqulbdeyvklgjbtkmlkotwtkseimieqbjmtvqmftryilpkifwkjhbtovdsmklxetljalmilmuvhgkrmhhkzpwywivmkvvkmrtx"
-// cyphertext.split()
+ciphertext = "xkvdxvokmlavgkigbcdlfkgscvckyiewixqecbzoytxcukbrwtwuvggykhxquavfhkaupkuqfticawunvzxvizlzmgfmycxrzctqavilvkugeuvrxhlwtzbjmbpobcjrgrhakausguhbwxwnwbetketahgkdigkvzwklzabrzwcetaokiazqhxrniscmtmguekloanwtuekwnqrhklslmgmzhtedxhobulxirbxuzalaionknecjlrnwwzzclxxivhoxngfrcretlhjxuekmisdwvrmxvkvqogvdysxpkkfzlbxgzaageooezqqflyetpywhglkekijiulkfnzwkvuwhwdbwiqrdbeetrjmhxbtixrigyamyigloacjfpigejlklbfnmsnquebcimexgcuazeoismpllwrxhkzkudnalevivjheoyxnmcjmjaghgvgfezgaxkvgvwvsiszqohevmxrzqpykvfhvsavztkiftxwxwwkhxilnkubvnvcunigovrgqkvvsgupksswvwwieemmqqmlkoeixipuxyilguuoamdegxzwgvntammuvemekukigvflavakxymcjgvdamsitwilttxowpslfnxslbjwffsmtxwijxjsbzkzwdxishjnqulbdeyvklgjbtkmlkotwtkseimieqbjmtvqmftryilpkifwkjhbtovdsmklxetljalmilmuvhgkrmhhkzpwywivmkvvkmrtx"
 letters = "abcdefghijklmnopqrstuvwxyz"
 letters = letters.split("")
 
-// TODO: fix naming / slicing
 let threeLetterPatterns = [];
 let fourLetterPatterns = [];
 let fiveLetterPatterns = [];
+let six = []
 
 function parseCyphertext() {
     for (let i = 0; i < letters.length; i++) {
@@ -15,6 +14,7 @@ function parseCyphertext() {
                 threeLetterPatterns.push(ciphertext.slice(j, j + 2))
                 fourLetterPatterns.push(ciphertext.slice(j, j + 3))
                 fiveLetterPatterns.push(ciphertext.slice(j, j + 4))
+                six.push(ciphertext.slice(j, j + 5))
             }
         }
     }
@@ -32,7 +32,6 @@ function getRepeatingPatterns(pattern, frequency) {
     let repeatingPatterns = {}
     for (const key in dict) {
         if (dict[key] > frequency) {
-            // console.log(key, dict[key])
             repeatingPatterns[key] = dict[key]; 
         }
     }
@@ -40,6 +39,7 @@ function getRepeatingPatterns(pattern, frequency) {
 }
 
 parseCyphertext()
-export let frequentTwoLetters = getRepeatingPatterns(threeLetterPatterns, 6) // Gets all 2-letter patterns that have a frequency of 7  or greater
-export let frequentThreeLetters = getRepeatingPatterns(fourLetterPatterns, 2) // Gets all 3-letter patterns that have a frequency of 3 or greater
-export let frequentFourLetters = getRepeatingPatterns(fiveLetterPatterns, 1) // Gets all 4-letter patterns that have a frequency of 2 or greater
+let frequentTwoLetters = getRepeatingPatterns(threeLetterPatterns, 6) // Gets all 2-letter patterns that have a frequency of 7  or greater
+let frequentThreeLetters = getRepeatingPatterns(fourLetterPatterns, 2) // Gets all 3-letter patterns that have a frequency of 3 or greater
+let frequentFourLetters = getRepeatingPatterns(fiveLetterPatterns, 1) // Gets all 4-letter patterns that have a frequency of 2 or greater
+let frequentFiveLetters = getRepeatingPatterns(six, 1)
