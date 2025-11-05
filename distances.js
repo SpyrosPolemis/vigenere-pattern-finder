@@ -3,17 +3,19 @@ let ciphertext = "xkvdxvokmlavgkigbcdlfkgscvckyiewixqecbzoytxcukbrwtwuvggykhxqua
 let patterns = ["et", "ig", "kv", "uek", "mlko"];
 let locations = [];
 
-for (let i = 0; i < patterns.length; i++) {
-    locations.push([])
-    // for each pattern, go through the text,
-    while (ciphertext.indexOf(patterns[i]) != -1) {
-        // while there is pattern in cipher text
-        patternIndex = ciphertext.indexOf(patterns[i]) // find the index of the first pattern in remaining text 
-        ciphertext = ciphertext.replace(patterns[i], replacePattern(patterns[i])) // replace the first pattern with 1's 
-        locations[i].push(patternIndex) // push the position into locations array
-        console.log(patternIndex + ciphertext)
+function getLocations() {
+    for (let i = 0; i < patterns.length; i++) {
+        locations.push([])
+        // for each pattern, go through the text,
+        while (ciphertext.indexOf(patterns[i]) != -1) {
+            // while there is pattern in cipher text
+            patternIndex = ciphertext.indexOf(patterns[i]) // find the index of the first pattern in remaining text 
+            ciphertext = ciphertext.replace(patterns[i], replacePattern(patterns[i])) // replace the first pattern with 1's 
+            locations[i].push(patternIndex) // push the position into locations array
+        }
     }
 }
+
 
 function replacePattern(pattern) {
     const length = pattern.length
