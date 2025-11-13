@@ -14,7 +14,7 @@ function splitCiphertext() {
     }
 }
 
-let letterFreq = [];
+let letterFreq = []; // [{a: 2, b: 3}. {a:1, b: 9} ...]
 
 function countLetters() {
     for (let i = 0; i < caesarCryptograms.length; i++) { //for each cryptogram
@@ -30,9 +30,32 @@ function countLetters() {
     }
 }
 
-// for each cryptogram
-//   count letters
-//   key = most common letter - e
-//   letter = alphabet[key]
-//  keyNMumber.append(key)
-//   key.append(letter)
+function subE() {
+    let key = []
+    for (let i = 0; i < letterFreq.length; i++) {
+        let commonestLetter = findMostCommonLetter(letterFreq[i])
+        key.push(commonestLetter)
+    }
+    return key;
+}
+
+function findMostCommonLetter(obj) {
+    const letters = Object.keys(obj)
+    let highestOccurenceIndex = 0;
+    let highestOccurences = 0;
+    for (let i = 0; i < letters.length; i++) {
+        if (obj[letters[i]] > highestOccurences) {
+            highestOccurenceIndex = i
+            highestOccurences = obj[letters[i]]
+        }
+    }
+    return letters[highestOccurenceIndex];
+}
+
+function findMostCommonLetters() {
+    splitCiphertext()
+    console.log(caesarCryptograms)
+    countLetters()
+    console.log(letterFreq)
+    console.log(subE())
+}
