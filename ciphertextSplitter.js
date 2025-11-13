@@ -14,6 +14,21 @@ function splitCiphertext() {
     }
 }
 
+let letterFreq = [];
+
+function countLetters() {
+    for (let i = 0; i < caesarCryptograms.length; i++) { //for each cryptogram
+        letterFreq.push({}) // Add an object
+        for (let j = 0; j < caesarCryptograms[i].length; j++) { // for each letter in according cryptogram
+            // if letter doesnt exist, add it, if it does, +1
+            if (caesarCryptograms[i][j] in letterFreq[i]) {
+                letterFreq[i][caesarCryptograms[i][j]] += 1
+            } else {
+                letterFreq[i][caesarCryptograms[i][j]] = 1
+            }
+        }
+    }
+}
 
 // for each cryptogram
 //   count letters
