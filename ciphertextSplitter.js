@@ -1,16 +1,16 @@
-
+ciphertext = "xkvdxvokmlavgkigbcdlfkgscvckyiewixqecbzoytxcukbrwtwuvggykhxquavfhkaupkuqfticawunvzxvizlzmgfmycxrzctqavilvkugeuvrxhlwtzbjmbpobcjrgrhakausguhbwxwnwbetketahgkdigkvzwklzabrzwcetaokiazqhxrniscmtmguekloanwtuekwnqrhklslmgmzhtedxhobulxirbxuzalaionknecjlrnwwzzclxxivhoxngfrcretlhjxuekmisdwvrmxvkvqogvdysxpkkfzlbxgzaageooezqqflyetpywhglkekijiulkfnzwkvuwhwdbwiqrdbeetrjmhxbtixrigyamyigloacjfpigejlklbfnmsnquebcimexgcuazeoismpllwrxhkzkudnalevivjheoyxnmcjmjaghgvgfezgaxkvgvwvsiszqohevmxrzqpykvfhvsavztkiftxwxwwkhxilnkubvnvcunigovrgqkvvsgupksswvwwieemmqqmlkoeixipuxyilguuoamdegxzwgvntammuvemekukigvflavakxymcjgvdamsitwilttxowpslfnxslbjwffsmtxwijxjsbzkzwdxishjnqulbdeyvklgjbtkmlkotwtkseimieqbjmtvqmftryilpkifwkjhbtovdsmklxetljalmilmuvhgkrmhhkzpwywivmkvvkmrtx"
 const keyLength = 9;
 
-const caesarCryptograms = [];
+let caesarCryptograms = [[],[],[],[],[],[],[],[],[]];
 const keyLetters = "";
 const keyNumbers = "";
 
-// for key length, 
-//  create that many arays and put them in caesarCryprograms
-// for cryptogram.length
-//  push letter i onto caesarCryptograms[something]
-// print caesar cryptograms
-
+let count = 0;
+for (let i = 0; i < ciphertext.length; i++) {
+    caesarCryptograms[count].push(ciphertext[i])
+    count += 1;
+    count = count % 9 // loop count from 1-9
+}
 
 // for each cryptogram
 //   count letters
