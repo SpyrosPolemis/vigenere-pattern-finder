@@ -2,8 +2,9 @@ let ciphertext = "xkvdxvokmlavgkigbcdlfkgscvckyiewixqecbzoytxcukbrwtwuvggykhxqua
 
 let patterns = ["et", "ig", "kv", "uek", "mlko"];
 let locations = [];
+let distances = [];
 
-function getLocations() {
+function findLocations() {
     for (let i = 0; i < patterns.length; i++) {
         locations.push([])
         // for each pattern, go through the text,
@@ -16,6 +17,16 @@ function getLocations() {
     }
 }
 
+function calculateDistances() {
+    for (let i = 0; i < locations.length; i++) { //for each pattern
+        distances.push([]) // add an array for distances
+        for (let j = 0; j < locations[i].length - 1; j++) //for each location in pattern
+            // console.log(locations[i + 1])
+            // console.log(locations[i])
+            // console.log(i)
+            distances[i].push(locations[i][j + 1] - locations[i][j]) // 
+    }
+}
 
 function replacePattern(pattern) {
     const length = pattern.length
