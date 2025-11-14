@@ -2,8 +2,6 @@ ciphertext = "xkvdxvokmlavgkigbcdlfkgscvckyiewixqecbzoytxcukbrwtwuvggykhxquavfhk
 const keyLength = 9;
 
 let caesarCryptograms = [[],[],[],[],[],[],[],[],[]];
-const keyLetters = "";
-const keyNumbers = "";
 
 function splitCiphertext() {
     let count = 0;
@@ -30,7 +28,7 @@ function countLetters() {
     }
 }
 
-function subE() {
+function assembleKey() {
     let key = []
     for (let i = 0; i < letterFreq.length; i++) {
         let commonestLetter = findMostCommonLetter(letterFreq[i])
@@ -54,8 +52,41 @@ function findMostCommonLetter(obj) {
 
 function findMostCommonLetters() {
     splitCiphertext()
-    console.log(caesarCryptograms)
+    console.log("Split Cryptograms:", caesarCryptograms)
     countLetters()
-    console.log(letterFreq)
-    console.log(subE())
+    console.log("Letter counts:",letterFreq)
+    const key = (assembleKey())
+    return key
 }
+
+function substituteLetter(letter) {
+    const mostCommonLetters = findMostCommonLetters(); 
+    const alpha = "abcdefghijklmnopqrstuvwxyz";
+    const plainIndex = alpha.indexOf(letter); // plaintext assumption
+
+    let decryptedKey = [];
+
+    for (let letter of mostCommonLetters) {
+        const cipherIndex = alpha.indexOf(letter);
+        const keyIndex = (cipherIndex - plainIndex + 26) % 26;
+        const keyLetter = alpha[keyIndex];
+        decryptedKey.push(keyLetter);
+    }
+    console.log(`Key - Substitute ${letter}`, decryptedKey)
+    return decryptedKey;
+}
+
+function decrypt(ciphertext, key) {
+    const alpha = "abcdefghijklmnopqrstuvwxyz";
+    let plain = "";
+
+    for (let i = 0; i < ciphertext.length; i++) {
+        const c = alpha.indexOf(ciphertext[i]);
+        const k = alpha.indexOf(key[i % key.length]);
+        const p = (c - k + 26) % 26;
+        plain += alpha[p];
+    }
+    return plain;
+}
+
+console.log(decrypt(ciphertext, substituteLetter("t")));
