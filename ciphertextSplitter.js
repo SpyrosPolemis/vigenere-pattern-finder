@@ -56,6 +56,7 @@ function findMostCommonLetters() {
     countLetters()
     console.log("Letter counts:",letterFreq)
     const key = (assembleKey())
+    console.log("Most common letters per cryptogram: ", key)
     return key
 }
 
@@ -89,4 +90,6 @@ function decrypt(ciphertext, key) {
     return plain;
 }
 
-console.log(decrypt(ciphertext, substituteLetter("t")));
+// console.log(decrypt(ciphertext, substituteLetter("e")));
+// console.log(decrypt(ciphertext, ["s", "t", "r", "a", "t","e","g","y","y"]));
+console.log(decrypt(ciphertext, ["s", "t", "r", "a", "t","e","g","i","c"]));
